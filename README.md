@@ -5,7 +5,7 @@ I am a PhD level epidemiologist with expertise in R programming and statistical 
 ## About Me
 - 🔬 BA-Chemistry, MPH, PhD Public Health Sciences - My experience encompassess bench laboratory science and research, clinical research, and public health/population health research.
 - 📊 Passionate about actionable science and evidence-based solutions to improve health and reduce unnecessary exposures.
-- 📝 Published researcher in epidemiology, environmental health sciences, disaster research, and community based participatory research.
+- 📝 Published researcher in epidemiology, environmental health sciences, disaster research, and cardiovascular disease.
 
 ## Technical Skills
 - **Languages:** R, SAS, SPSS, SQL, Python, ArcGIS, QGIS, C C++, Shell scripting
