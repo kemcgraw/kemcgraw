@@ -16,5 +16,4 @@ I am a PhD level epidemiologist with expertise in R programming and statistical 
 Check out my pinned repositories below for examples of my work!
 
 ## Connect
-- 📧 Email: katlyn.mcgraw.km@gmail.com
 - 💼 LinkedIn: https://www.linkedin.com/in/katlynemcgraw/
