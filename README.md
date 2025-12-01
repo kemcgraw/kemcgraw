@@ -3,7 +3,7 @@
 I am a PhD level epidemiologist with expertise in R programming and statistical analysis, scientific writing, project management, and grant writing. I focus on how different exposures contribute to cardiovascular disease at the population health level using clinically relevant outcomes such as traditional and subclinical risk factors, and hospitalizations and mortality.
 
 ## About Me
-- 🔬 BA-Chemistry, MPH, PhD Public Health Sciences - My experience encompassess bench laboratory science and research, clinical research, and public health/population health research.
+- 🔬 BA-Chemistry, MPH, PhD Public Health Sciences - bench -> clinic -> population research
 - 📊 Passionate about actionable science and evidence-based solutions to improve health and reduce unnecessary exposures.
 - 📝 Published researcher in epidemiology, environmental health sciences, disaster research, and cardiovascular disease.
 
