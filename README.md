@@ -1,5 +1,4 @@
-# Hi, I'm Katlyn E McGraw 👋
-
+# Hi, I'm Katlyn
 I am a PhD level epidemiologist with expertise in R programming and statistical analysis, scientific writing, project management, and grant writing. I focus on how different exposures contribute to cardiovascular disease at the population health level using clinically relevant outcomes such as traditional and subclinical risk factors, and hospitalizations and mortality.
 
 ## About Me
