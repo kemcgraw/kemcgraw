@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Academic Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-ink: #1a1a1a;
+            --color-paper: #fafaf8;
+            --color-accent: #8b4513;
+            --color-accent-light: #d4a574;
+            --color-muted: #666666;
+            --color-border: #e0dfd8;
+            --serif: 'Playfair Display', serif;
+            --sans: 'Source Sans 3', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--color-paper);
+            color: var(--color-ink);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-ink);
+            font-weight: 400;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 100px;
+            padding: 6rem 2rem 4rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-family: var(--serif);
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero-content .affiliation {
+            color: var(--color-muted);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 2px;
+            box-shadow: 20px 20px 0 var(--color-accent-light);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: translate(-5px, -5px);
+        }
+
+        /* Biography */
+        .biography {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .section-title {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--color-accent);
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        .interests, .education {
+            margin-top: 3rem;
+        }
+
+        .interests h3, .education h3 {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .interests ul, .education ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .interests li, .education li {
+            padding: 0.5rem 0;
+            border-left: 2px solid var(--color-accent-light);
+            padding-left: 1rem;
+        }
+
+        .education li {
+            border-left: 2px solid var(--color-border);
+        }
+
+        .education .degree {
+            font-weight: 600;
+            color: var(--color-ink);
+        }
+
+        .education .institution {
+            color: var(--color-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Projects Grid */
+        .projects {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            border: 1px solid var(--color-border);
+            background: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--color-accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-family: var(--serif);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--color-muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            text-decoration: none;
+            padding: 0.4rem 1rem;
+            border: 1px solid var(--color-accent);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        /* Posts Section */
+        .posts {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.8s forwards;
+        }
+
+        .post-list {
+            margin-top: 3rem;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .post-item {
+            border-left: 3px solid var(--color-accent-light);
+            padding-left: 2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .post-item:hover {
+            border-color: var(--color-accent);
+        }
+
+        .post-date {
+            font-size: 0.85rem;
+            color: var(--color-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-title {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-title a {
+            color: var(--color-ink);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .post-title a:hover {
+            color: var(--color-accent);
+        }
+
+        .post-excerpt {
+            color: var(--color-muted);
+        }
+
+        /* Publications */
+        .publications {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 1s forwards;
+        }
+
+        .publication-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+
+        .pub-title {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--color-ink);
+        }
+
+        .pub-authors {
+            color: var(--color-muted);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .pub-venue {
+            font-style: italic;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .pub-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .pub-link {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            text-decoration: none;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid var(--color-accent-light);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .pub-link:hover {
+            background: var(--color-accent-light);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-ink);
+            color: var(--color-paper);
+            padding: 3rem 2rem;
+            margin-top: 6rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--color-accent-light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            color: var(--color-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 4rem 2rem 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                order: -1;
+                display: flex;
+                justify-content: center;
+            }
+
+            .hero-image img {
+                max-width: 300px;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Your Name</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#posts">Posts</a></li>
+                <li><a href="#publications">Publications</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Name</h1>
+            <div class="subtitle">Professor of Psychology</div>
+            <div class="affiliation">University Name - Department of Psychology</div>
+            <p style="margin-top: 1rem; font-size: 1.05rem;">Researcher, educator, and advocate for open science and reproducible research methods.</p>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Profile Photo">
+        </div>
+    </section>
+
+    <section id="about" class="biography">
+        <h2 class="section-title">Biography</h2>
+        <div class="bio-text">
+            <p>Welcome to my academic portfolio. I am a professor in the Department of Psychology at University Name, where my research focuses on [your research areas]. I am passionate about advancing open science practices, developing innovative research methodologies, and mentoring the next generation of researchers.</p>
+            
+            <p style="margin-top: 1rem;">My work spans multiple areas including [area 1], [area 2], and [area 3]. I am committed to making research more transparent, accessible, and reproducible through the development of open-source tools and educational resources.</p>
+        </div>
+
+        <div class="interests">
+            <h3>Research Interests</h3>
+            <ul>
+                <li>Open Science & Reproducibility</li>
+                <li>Statistical Methods & Data Analysis</li>
+                <li>Research Methodology</li>
+                <li>Computational Tools Development</li>
+                <li>Meta-Science & Research Practices</li>
+                <li>Teaching & Pedagogy</li>
+            </ul>
+        </div>
+
+        <div class="education">
+            <h3>Education</h3>
+            <ul>
+                <li>
+                    <div class="degree">PhD in Psychology, 2015</div>
+                    <div class="institution">University Name</div>
+                </li>
+                <li>
+                    <div class="degree">MSc in Research Methods, 2010</div>
+                    <div class="institution">University Name</div>
+                </li>
+                <li>
+                    <div class="degree">BSc in Psychology, 2008</div>
+                    <div class="institution">University Name</div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-grid">
+            <div class="project-card fade-in">
+                <div class="project-image">📊</div>
+                <div class="project-content">
+                    <h3 class="project-title">Data Simulation Tools</h3>
+                    <p class="project-description">Open-source R package for simulating factorial datasets and conducting power analyses for complex experimental designs.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Documentation</a>
+                        <a href="#" class="project-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">📚</div>
+                <div class="project-content">
+                    <h3 class="project-title">Open Science Curriculum</h3>
+                    <p class="project-description">Comprehensive teaching materials for reproducible research practices, covering R, version control, and open data principles.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Materials</a>
+                        <a href="#" class="project-link">Tutorials</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">🔬</div>
+                <div class="project-content">
+                    <h3 class="project-title">Research Collaboration Network</h3>
+                    <p class="project-description">Multi-lab collaborative project advancing large-scale replication studies and improving generalizability of findings.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Website</a>
+                        <a href="#" class="project-link">Join</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">💻</div>
+                <div class="project-content">
+                    <h3 class="project-title">Statistical Visualization</h3>
+                    <p class="project-description">Interactive web applications for teaching statistical concepts through dynamic visualizations and simulations.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Demo</a>
+                        <a href="#" class="project-link">Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">📖</div>
+                <div class="project-content">
+                    <h3 class="project-title">Methods Handbook</h3>
+                    <p class="project-description">Comprehensive guide to modern research methods in psychology, with emphasis on computational approaches and best practices.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Read Online</a>
+                        <a href="#" class="project-link">PDF</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image">🌐</div>
+                <div class="project-content">
+                    <h3 class="project-title">Open Data Repository</h3>
+                    <p class="project-description">Curated collection of openly available datasets for teaching and secondary analysis in psychological research.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Browse</a>
+                        <a href="#" class="project-link">Contribute</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="posts" class="posts">
+        <h2 class="section-title">Recent Posts</h2>
+        <div class="post-list">
+            <article class="post-item fade-in">
+                <div class="post-date">February 2026</div>
+                <h3 class="post-title"><a href="#">Understanding Power Analysis for Mixed Designs</a></h3>
+                <p class="post-excerpt">A practical guide to conducting power analyses for complex experimental designs using simulation-based approaches.</p>
+            </article>
+
+            <article class="post-item fade-in">
+                <div class="post-date">January 2026</div>
+                <h3 class="post-title"><a href="#">Pre-registration Best Practices</a></h3>
+                <p class="post-excerpt">Key considerations and practical tips for writing effective pre-registration documents that support transparent research.</p>
+            </article>
+
+            <article class="post-item fade-in">
+                <div class="post-date">December 2025</div>
+                <h3 class="post-title"><a href="#">Teaching Statistics with R: Lessons Learned</a></h3>
+                <p class="post-excerpt">Reflections on five years of teaching computational statistics to psychology students and what works best.</p>
+            </article>
+
+            <article class="post-item fade-in">
+                <div class="post-date">November 2025</div>
+                <h3 class="post-title"><a href="#">The Value of Team Science</a></h3>
+                <p class="post-excerpt">How collaborative research networks are transforming psychological science and improving research quality.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="publications" class="publications">
+        <h2 class="section-title">Selected Publications</h2>
+
+        <article class="publication-item fade-in">
+            <h3 class="pub-title">Open Science Practices in Psychology: A Meta-Analysis</h3>
+            <div class="pub-authors">Your Name, Collaborator A., Collaborator B.</div>
+            <div class="pub-venue">Psychological Methods, 2025</div>
+            <div class="pub-links">
+                <a href="#" class="pub-link">PDF</a>
+                <a href="#" class="pub-link">DOI</a>
+                <a href="#" class="pub-link">OSF</a>
+                <a href="#" class="pub-link">Data</a>
+            </div>
+        </article>
+
+        <article class="publication-item fade-in">
+            <h3 class="pub-title">Data Simulation for Reproducible Research: A Practical Guide</h3>
+            <div class="pub-authors">Your Name</div>
+            <div class="pub-venue">Advances in Methods and Practices in Psychological Science, 2024</div>
+            <div class="pub-links">
+                <a href="#" class="pub-link">PDF</a>
+                <a href="#" class="pub-link">DOI</a>
+                <a href="#" class="pub-link">Code</a>
+            </div>
+        </article>
+
+        <article class="publication-item fade-in">
+            <h3 class="pub-title">Improving Replicability Through Multi-Lab Collaborations</h3>
+            <div class="pub-authors">Research Consortium (Your Name, member)</div>
+            <div class="pub-venue">Nature Human Behaviour, 2024</div>
+            <div class="pub-links">
+                <a href="#" class="pub-link">PDF</a>
+                <a href="#" class="pub-link">DOI</a>
+                <a href="#" class="pub-link">Supplement</a>
+            </div>
+        </article>
+
+        <article class="publication-item fade-in">
+            <h3 class="pub-title">Teaching Computational Methods: Evidence-Based Approaches</h3>
+            <div class="pub-authors">Your Name, Co-Author A., Co-Author B.</div>
+            <div class="pub-venue">Scholarship of Teaching and Learning in Psychology, 2023</div>
+            <div class="pub-links">
+                <a href="#" class="pub-link">PDF</a>
+                <a href="#" class="pub-link">DOI</a>
+                <a href="#" class="pub-link">Materials</a>
+            </div>
+        </article>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">GitHub</a>
+                <a href="#">Google Scholar</a>
+                <a href="#">Email</a>
+            </div>
+            <div class="copyright">
+                © 2026 Your Name. This work is licensed under CC BY SA 4.0
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add stagger effect to project cards
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach((card, index) => {
+            card.style.animationDelay = `${0.6 + index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>
